@@ -2,12 +2,14 @@
 from .dukemtmcreid import DukeMTMCreID
 from .market1501 import Market1501
 from .msmt import MSMT17_V1
+from .clg_data import college_dat
 from .dataset_loader import ImageDataset
 
 __factory = {
     'market1501': Market1501,
     'msmt17': MSMT17_V1,
-    'dukemtmc': DukeMTMCreID
+    'dukemtmc': DukeMTMCreID,
+    'clg_data': college_dat
 }
 
 

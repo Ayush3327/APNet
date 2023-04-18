@@ -121,7 +121,8 @@ def do_train(
 
     trainer = create_supervised_trainer(model, optimizer, loss_fn, device=device)
     evaluator = create_supervised_evaluator(model, metrics={'r1_mAP': R1_mAP(num_query)}, device=device)
-    checkpointer = ModelCheckpoint(output_dir, cfg.MODEL.NAME,  n_saved=5, require_empty=False)
+    #checkpointer = ModelCheckpoint(output_dir, cfg.MODEL.NAME,  n_saved=5, require_empty=False)
+    checkpointer = ModelCheckpoint(output_dir, cfg.MODEL.NAME, save_interval=1, n_saved=5, require_empty=False)
     timer = Timer(average=True)
 
     trainer.add_event_handler(Events.EPOCH_COMPLETED, checkpointer, {'model': model, 'optimizer': optimizer})
