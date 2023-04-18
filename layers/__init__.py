@@ -6,9 +6,7 @@ from .cross_entropy_loss import CrossEntropyLoss
 from .arcface_loss import ArcFaceLoss
 from .circle_loss import CircleLoss
 from .cosface_loss import CosFaceLoss
-from .contrastive_loss import ContrastiveLoss
 from .center_loss import CenterLoss
-from .centroid_triplet import CentroidTripletLoss
 
 
 
@@ -19,10 +17,8 @@ def make_loss(cfg):
     cross_entropy = CrossEntropyLoss(num_classes=cfg.SOLVER.CLASSNUM,epsilon=cfg.SOLVER.SMOOTH)
     arc_face = ArcFaceLoss(cfg.SOLVER.MARGIN)
     circlel = CircleLoss(cfg.SOLVER.MARGIN)
-    contra = ContrastiveLoss(num_classes=cfg.SOLVER.CLASSNUM)
     cosf = CosFaceLoss(cfg.SOLVER.MARGIN)
     cent = CenterLoss(num_classes=cfg.SOLVER.CLASSNUM)
-    centroid = CentroidTripletLoss(cfg.SOLVER.MARGIN)
 
     if sampler == 'softmax':
         def loss_func(score, feat, target):
